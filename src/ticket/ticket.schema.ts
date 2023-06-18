@@ -23,6 +23,18 @@ export class TicketSchema {
   @Column()
   ticketPrice: number;
 
+  @Column()
+  seatNumber: string;
+
+  @Column()
+  theaterRoom: string;
+
+  @Column({ default: 'BOOKED' })
+  ticketStatus: string;
+
+  @Column({ nullable: true })
+  ticketType: string;
+
   @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
 

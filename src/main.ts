@@ -12,6 +12,10 @@ async function bootstrap() {
       errorHttpStatusCode: 422,
     }),
   );
+
+  const timezone = process.env.TIMEZONE || 'UTC'; // Retrieve the time zone from the environment variable
+  process.env.TZ = timezone;
+
   await app.listen(2023);
 }
 bootstrap();

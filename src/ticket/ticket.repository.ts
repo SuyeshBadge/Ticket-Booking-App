@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 import { FindManyOptions, FindOneOptions, Repository } from 'typeorm';
 import { TicketSchema } from './ticket.schema';
+import { ICreateTicket } from 'src/interface/ticket.interface';
 
 @Injectable()
 export class TicketRepository {
@@ -19,7 +20,7 @@ export class TicketRepository {
     return this.ticketRepository.findOne(options);
   }
 
-  async create(userData) {
-    return this.ticketRepository.save(userData);
+  async create(ticketData: ICreateTicket) {
+    return this.ticketRepository.save(ticketData);
   }
 }
