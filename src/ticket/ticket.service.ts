@@ -6,8 +6,8 @@ import { ICreateTicket } from 'src/interface/ticket.interface';
 export class TicketService {
   constructor(private readonly ticketRepository: TicketRepository) {}
 
-  async getTicket() {
-    return this.ticketRepository.find({});
+  async getTicket(id: number) {
+    return this.ticketRepository.findOne({ id: id });
   }
 
   async createTicket(data: ICreateTicket) {

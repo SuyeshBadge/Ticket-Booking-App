@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
   Patch,
   Post,
   UseGuards,
@@ -11,6 +12,8 @@ import { AppGuard } from 'src/guards/app.guard';
 import { TicketService } from './ticket.service';
 import { CreateTicketDto } from 'src/dto/ticket/create-ticket.dto';
 import { Response } from 'src/utils/response/response.decorator';
+import { GetTicketDto } from 'src/dto/ticket/get-ticket.dto';
+import { UpdateTicketParamDto } from 'src/dto/ticket/update-ticket.dto';
 
 @Controller('ticket')
 @UseGuards(AppGuard)
@@ -18,8 +21,8 @@ import { Response } from 'src/utils/response/response.decorator';
 export class TicketController {
   constructor(private readonly ticketService: TicketService) {}
   @Get('/:id')
-  async getTicket() {
-    return this.ticketService.getTicket();
+  async getTicket(@Param() params: GetTicketDto) {
+    return this.ticketService.getTicket(params.id);
   }
 
   @Post()
@@ -28,7 +31,7 @@ export class TicketController {
   }
 
   @Patch('/:id')
-  async updateTicket() {
+  async updateTicket(@Param() params: UpdateTicketParamDto) {
     return true;
   }
 
