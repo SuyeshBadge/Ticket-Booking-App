@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TicketModule } from './ticket/ticket.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { AnalyticsModule } from './analytics/analytics.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -19,6 +20,7 @@ import { ConfigModule } from '@nestjs/config';
       autoLoadEntities: true,
     }),
     TicketModule,
+    AnalyticsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
