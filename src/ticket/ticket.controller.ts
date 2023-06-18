@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
   Param,
   Patch,
   Post,
@@ -17,6 +18,7 @@ import {
   UpdateTicketBodyDto,
   UpdateTicketParamDto,
 } from 'src/dto/ticket/update-ticket.dto';
+import { DeleteTicketDto } from 'src/dto/ticket/delete-ticket.dto';
 
 @Controller('ticket')
 @UseGuards(AppGuard)
@@ -42,7 +44,8 @@ export class TicketController {
   }
 
   @Delete('/:id')
-  async deleteTicket() {
-    return true;
+  @HttpCode(204)
+  async deleteTicket(@Param() params: DeleteTicketDto) {
+    return this.ticketService.deleteTicket(params.id);
   }
 }
