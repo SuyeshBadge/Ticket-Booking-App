@@ -13,7 +13,10 @@ import { TicketService } from './ticket.service';
 import { CreateTicketDto } from 'src/dto/ticket/create-ticket.dto';
 import { Response } from 'src/utils/response/response.decorator';
 import { GetTicketDto } from 'src/dto/ticket/get-ticket.dto';
-import { UpdateTicketParamDto } from 'src/dto/ticket/update-ticket.dto';
+import {
+  UpdateTicketBodyDto,
+  UpdateTicketParamDto,
+} from 'src/dto/ticket/update-ticket.dto';
 
 @Controller('ticket')
 @UseGuards(AppGuard)
@@ -31,8 +34,11 @@ export class TicketController {
   }
 
   @Patch('/:id')
-  async updateTicket(@Param() params: UpdateTicketParamDto) {
-    return true;
+  async updateTicket(
+    @Param() params: UpdateTicketParamDto,
+    @Body() body: UpdateTicketBodyDto,
+  ) {
+    return this.ticketService.updateTicket(params.id, body);
   }
 
   @Delete('/:id')

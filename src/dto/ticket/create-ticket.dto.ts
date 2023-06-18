@@ -2,11 +2,13 @@ import { Type } from 'class-transformer';
 import {
   IsDate,
   IsDefined,
+  IsEnum,
   IsNotEmpty,
   IsNumber,
   IsOptional,
   IsString,
 } from 'class-validator';
+import { TicketType } from 'src/enum/ticket/ticket.enum';
 
 export class CreateTicketDto {
   @IsString()
@@ -23,6 +25,7 @@ export class CreateTicketDto {
 
   @IsString()
   @IsOptional()
+  @IsEnum(TicketType)
   @Type(() => String)
   ticketType?: string;
 

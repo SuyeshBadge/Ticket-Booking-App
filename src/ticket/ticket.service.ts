@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { TicketRepository } from './ticket.repository';
-import { ICreateTicket } from 'src/interface/ticket.interface';
+import { ICreateTicket, IUpdateTicket } from 'src/interface/ticket.interface';
 
 @Injectable()
 export class TicketService {
@@ -26,5 +26,9 @@ export class TicketService {
     const newTicket = await this.ticketRepository.create(data);
 
     return newTicket;
+  }
+
+  async updateTicket(id: number, data: IUpdateTicket) {
+    return this.ticketRepository.update(id, data);
   }
 }
