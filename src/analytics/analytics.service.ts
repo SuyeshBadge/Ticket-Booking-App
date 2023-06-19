@@ -85,6 +85,37 @@ export class AnalyticsService {
   }
 
   async calculateVisitsDirectly(data: IGetVisits) {
-    return true;
+    let allTickets = await this.ticketService.getAllTickets({});
+    if (data.fromDate) {
+      allTickets = allTickets.filter(
+        (ticket) => ticket.movie_time.getTime() >= data.fromDate.getTime(),
+      );
+    }
+    if (data.toDate) {
+      allTickets = allTickets.filter(
+        (ticket) => ticket.movie_time.getTime() <= data.toDate.getTime(),
+      );
+    }
+    const summary: { month?: string; visits?: number } = {};
+
+    allTickets.forEach((ticket) => {
+      const movieTime = new Date(ticket.movie_time);
+      const month: string = movieTime.toLocaleString('en-US', {
+        month: 'long',
+      });
+
+      if (summary[month]) {
+        summary[month] += 1;
+      } else {
+        summary[month] = 1;
+      }
+    });
+
+    const summaryList = Object.entries(summary).map(([month, profit]) => ({
+      month,
+      summaryVisits: profit.toString(),
+    }));
+
+    return summaryList;
   }
 }
