@@ -1,0 +1,653 @@
+{
+	"info": {
+		"_postman_id": "836f6fbe-e3ab-4d7d-8b36-7ffae8189304",
+		"name": "Ticket Booking",
+		"description": "Welcome to the Ticket Booking App API documentation! This documentation provides detailed information on how to interact with the Ticket Booking App API to perform various operations related to ticket booking.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21169857"
+	},
+	"item": [
+		{
+			"name": "Tickets",
+			"item": [
+				{
+					"name": "Get Ticket",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/ticket/10",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"ticket",
+								"10"
+							]
+						},
+						"description": "Retrieves the details of a specific ticket."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "/ticket/10",
+									"path": [
+										"ticket",
+										"10"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "334"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14e-dXM1mB2agciNGI/GZ9yvuXKeJsw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Jun 2023 19:13:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"data\": {\n        \"id\": 10,\n        \"customer_name\": \"Dianna Funk IV\",\n        \"movie_title\": \"program\",\n        \"movie_time\": \"2023-01-22T12:00:00.000Z\",\n        \"ticket_price\": 589,\n        \"seat_number\": \"H12\",\n        \"theater_room\": \"F\",\n        \"ticket_status\": \"BOOKED\",\n        \"ticket_type\": \"STUDENT\",\n        \"created_at\": \"2023-06-19T19:12:35.381Z\",\n        \"updated_at\": \"2023-06-19T19:12:35.381Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Ticket",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer_name\": \"{{$randomFullName}}\",\n    \"movie_title\": \"{{$randomNoun}}\",\n    \"movie_time\": \"2023-01-22T12:00:00\",\n    \"ticket_price\": \"{{$randomInt}}\",\n    \"ticket_type\":\"STUDENT\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/ticket/",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"ticket",
+								""
+							]
+						},
+						"description": "Creates a new booking for a ticket."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"customer_name\": \"Ruth Mohr\",\n    \"movie_title\": \"transmitter\",\n    \"movie_time\": \"2023-01-22T12:00:00\",\n    \"ticket_price\": \"970\",\n    \"ticket_type\":\"STUDENT\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "/ticket/",
+									"path": [
+										"ticket",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "334"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14e-Q8nBvz5BIjfb40jL/AZB8tbfcSY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Jun 2023 19:12:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"success\": true,\n    \"data\": {\n        \"customer_name\": \"Dianna Funk IV\",\n        \"movie_title\": \"program\",\n        \"movie_time\": \"2023-01-22T12:00:00.000Z\",\n        \"ticket_price\": 589,\n        \"seat_number\": \"H12\",\n        \"theater_room\": \"F\",\n        \"ticket_type\": \"STUDENT\",\n        \"id\": 10,\n        \"ticket_status\": \"BOOKED\",\n        \"created_at\": \"2023-06-19T19:12:35.381Z\",\n        \"updated_at\": \"2023-06-19T19:12:35.381Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update TIcket",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ticket_type\":\"CHILD\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/ticket/10",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"ticket",
+								"10"
+							]
+						},
+						"description": "Updates the details of a specific ticket."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"ticket_type\":\"CHILD\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "/ticket/10",
+									"path": [
+										"ticket",
+										"10"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "332"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14c-sERO6/kkCVcALFEAtOPA1PmthdY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Jun 2023 19:17:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"data\": {\n        \"id\": 10,\n        \"customer_name\": \"Dianna Funk IV\",\n        \"movie_title\": \"program\",\n        \"movie_time\": \"2023-01-22T12:00:00.000Z\",\n        \"ticket_price\": 589,\n        \"seat_number\": \"H12\",\n        \"theater_room\": \"F\",\n        \"ticket_status\": \"BOOKED\",\n        \"ticket_type\": \"CHILD\",\n        \"created_at\": \"2023-06-19T19:12:35.381Z\",\n        \"updated_at\": \"2023-06-19T19:17:09.318Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Ticket",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/ticket/12",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"ticket",
+								"12"
+							]
+						},
+						"description": "Deletes the specific ticket."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "/ticket/12",
+									"path": [
+										"ticket",
+										"12"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-bKU7JuFAskES9j7LGA51yyNDZpA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Jun 2023 19:17:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"description": "This folder contains API endpoints related to managing tickets."
+		},
+		{
+			"name": "Analytics",
+			"item": [
+				{
+					"name": "Get Revenue",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/analytics/revenue/:method",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"analytics",
+								"revenue",
+								":method"
+							],
+							"query": [
+								{
+									"key": "fromDate",
+									"value": "2023-03-20",
+									"disabled": true
+								},
+								{
+									"key": "toDate",
+									"value": "2023-04-20",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "method",
+									"value": "db-aggregation"
+								}
+							]
+						},
+						"description": "Retrieves the monthly revenue statistics."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "/analytics/revenue/:method",
+									"path": [
+										"analytics",
+										"revenue",
+										":method"
+									],
+									"query": [
+										{
+											"key": "fromDate",
+											"value": "2023-03-20",
+											"disabled": true
+										},
+										{
+											"key": "toDate",
+											"value": "2023-04-20",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "method",
+											"value": "direct"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "250"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fa-TveSte6HYhwZ99kep2W2yewNKjA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Jun 2023 19:12:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"data\": [\n        {\n            \"month\": \"May\",\n            \"summaryProfit\": \"728\"\n        },\n        {\n            \"month\": \"March\",\n            \"summaryProfit\": \"1470\"\n        },\n        {\n            \"month\": \"February\",\n            \"summaryProfit\": \"682\"\n        },\n        {\n            \"month\": \"December\",\n            \"summaryProfit\": \"127\"\n        },\n        {\n            \"month\": \"January\",\n            \"summaryProfit\": \"1329\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Visits",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/analytics/visited/:method",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"analytics",
+								"visited",
+								":method"
+							],
+							"query": [
+								{
+									"key": "fromDate",
+									"value": "2023-03-14",
+									"disabled": true
+								},
+								{
+									"key": "toDate",
+									"value": "2023-05-10",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "method",
+									"value": "direct"
+								}
+							]
+						},
+						"description": "Retrieves the monthly visit statistics."
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "/analytics/visited/:method",
+									"path": [
+										"analytics",
+										"visited",
+										":method"
+									],
+									"query": [
+										{
+											"key": "fromDate",
+											"value": "2023-03-14",
+											"disabled": true
+										},
+										{
+											"key": "toDate",
+											"value": "2023-05-10",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "method",
+											"value": "direct"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "238"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ee-hloI8A+KCilx9TVua2AgzNZbP2I\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 19 Jun 2023 19:17:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"data\": [\n        {\n            \"month\": \"May\",\n            \"summaryVisits\": \"3\"\n        },\n        {\n            \"month\": \"March\",\n            \"summaryVisits\": \"3\"\n        },\n        {\n            \"month\": \"February\",\n            \"summaryVisits\": \"1\"\n        },\n        {\n            \"month\": \"December\",\n            \"summaryVisits\": \"1\"\n        },\n        {\n            \"month\": \"January\",\n            \"summaryVisits\": \"2\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"description": "This folder contains API endpoints related to analytics and statistics."
+		},
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/health-check",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"health-check"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/health-check",
+							"path": [
+								"health-check"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2d-jJhWz7AGcIRgsVLiwVX9KlIYWx0\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 Jun 2023 19:17:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 200,\n    \"success\": true,\n    \"data\": true\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{API_SECRET}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "X-Api-Secret",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseUrl",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "API_SECRET",
+			"value": "ndywpvbvebncqebtjuxvacrmhckkzqvu"
+		}
+	]
+}
