@@ -27,15 +27,15 @@ export class TicketService {
 
   async createTicket(data: ICreateTicket) {
     try {
-      if (!data.seatNumber) {
-        data.seatNumber =
+      if (!data.seat_number) {
+        data.seat_number =
           String.fromCharCode(Math.floor(Math.random() * 15) + 65) +
           Array.from({ length: 2 }, () => Math.floor(Math.random() * 10)).join(
             '',
           );
       }
-      if (!data.theaterRoom) {
-        data.theaterRoom = String.fromCharCode(
+      if (!data.theater_room) {
+        data.theater_room = String.fromCharCode(
           Math.floor(Math.random() * 10) + 65,
         );
       }
@@ -70,5 +70,37 @@ export class TicketService {
       }
       throw new InternalServerErrorException('Something went wrong.');
     }
+  }
+
+  async getRevenueByMonth(fromDate: Date, toDate: Date) {
+    let where = ``;
+    if (fromDate && !toDate) {
+      where = `WHERE movie_time >= '${fromDate.toISOString()}'`;
+    }
+    if (toDate && !fromDate) {
+      where = `WHERE movie_time <= '${toDate.toISOString()}'`;
+    }
+    if (fromDate && toDate) {
+      where = `WHERE movie_time >=  '${fromDate.toISOString()}' AND movie_time <=  '${toDate.toISOString()}
+      '`;
+    }
+    const query = `SELECT DATE_TRUNC('month', movie_time) AS month, SUM(ticket_price) AS price FROM ticket_schema ${where} GROUP BY month ORDER BY month`;
+    return await this.ticketRepository.runRawQuery(query);
+  }
+
+  async getVisitsByMonth(fromDate: Date, toDate: Date) {
+    let where = ``;
+    if (fromDate && !toDate) {
+      where = `WHERE movie_time >= '${fromDate.toISOString()}'`;
+    }
+    if (toDate && !fromDate) {
+      where = `WHERE movie_time <= '${toDate.toISOString()}'`;
+    }
+    if (fromDate && toDate) {
+      where = `WHERE movie_time >=  '${fromDate.toISOString()}' AND movie_time <=  '${toDate.toISOString()}
+      '`;
+    }
+    const query = `SELECT DATE_TRUNC('month', movie_time) AS month, COUNT(*) AS visits FROM ticket_schema ${where} GROUP BY month ORDER BY month;`;
+    return this.ticketRepository.runRawQuery(query);
   }
 }

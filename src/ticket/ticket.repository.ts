@@ -46,4 +46,8 @@ export class TicketRepository {
     const result = await this.ticketRepository.delete({ id });
     return result.affected > 0;
   }
+
+  async runRawQuery(query: string): Promise<any> {
+    return await this.ticketRepository.query(query);
+  }
 }
