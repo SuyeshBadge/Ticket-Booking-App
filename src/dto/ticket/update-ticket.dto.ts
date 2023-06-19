@@ -12,32 +12,36 @@ export class UpdateTicketBodyDto {
   @IsString()
   @IsOptional()
   @Type(() => String)
-  customerName?: string;
+  customer_name?: string;
 
   @IsString()
   @IsOptional()
   @Type(() => String)
-  movieTitle?: string;
+  movie_title?: string;
 
   @IsString()
   @IsOptional()
   @Type(() => Date)
-  movieTime?: Date;
-  ticketPrice?: number;
+  movie_time?: Date;
+
+  @IsNumber()
+  @Type(() => Number)
+  @IsOptional()
+  ticket_price?: number;
 
   @IsString()
   @IsOptional()
   @IsEnum(TicketType)
   @Type(() => String)
-  ticketType?: string;
+  ticket_type?: string;
 
   @IsString()
   @IsOptional()
   @Type(() => String)
-  seatNumber?: string;
+  seat_number?: string;
 
   @IsString()
   @IsOptional()
   @Type(() => String)
-  theaterRoom?: string;
+  theater_room?: string;
 }

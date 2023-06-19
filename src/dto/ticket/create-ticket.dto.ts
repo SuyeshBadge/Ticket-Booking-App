@@ -15,26 +15,26 @@ export class CreateTicketDto {
   @IsDefined()
   @IsNotEmpty()
   @Type(() => String)
-  customerName: string;
+  customer_name: string;
 
   @IsString()
   @IsDefined()
   @IsNotEmpty()
   @Type(() => String)
-  movieTitle: string;
+  movie_title: string;
 
   @IsString()
   @IsOptional()
   @IsEnum(TicketType)
   @Type(() => String)
-  ticketType?: string;
+  ticket_type?: string;
 
   @IsDate()
   @IsDefined()
   @Type(() => Date)
-  movieTime: Date;
+  movie_time: Date;
 
   @IsNumber()
   @Type(() => Number)
-  ticketPrice: number;
+  ticket_price: number;
 }

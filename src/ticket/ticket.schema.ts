@@ -12,32 +12,32 @@ export class TicketSchema {
   id: number;
 
   @Column()
-  customerName: string;
+  customer_name: string;
 
   @Column()
-  movieTitle: string;
+  movie_title: string;
 
   @Column()
-  movieTime: Date;
+  movie_time: Date;
 
   @Column()
-  ticketPrice: number;
+  ticket_price: number;
 
   @Column()
-  seatNumber: string;
+  seat_number: string;
 
   @Column()
-  theaterRoom: string;
+  theater_room: string;
 
   @Column({ default: 'BOOKED' })
-  ticketStatus: string;
+  ticket_status: string;
 
   @Column({ nullable: true })
-  ticketType: string;
+  ticket_type: string;
 
   @CreateDateColumn({ type: 'timestamp' })
-  createdAt: Date;
+  created_at: Date;
 
   @UpdateDateColumn({ type: 'timestamp' })
-  updatedAt: Date;
+  updated_at: Date;
 }

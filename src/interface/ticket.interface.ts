@@ -1,19 +1,19 @@
 export interface ICreateTicket {
-  customerName: string;
-  movieTitle: string;
-  movieTime: Date;
-  ticketPrice: number;
-  seatNumber?: string;
-  theaterRoom?: string;
-  ticketType?: string;
+  customer_name: string;
+  movie_title: string;
+  movie_time: Date;
+  ticket_price: number;
+  seat_number?: string;
+  theater_room?: string;
+  ticket_type?: string;
 }
 
 export interface IUpdateTicket {
-  customerName?: string;
-  movieTitle?: string;
-  movieTime?: Date;
-  ticketPrice?: number;
-  seatNumber?: string;
-  theaterRoom?: string;
-  ticketType?: string;
+  customer_name?: string;
+  movie_title?: string;
+  movie_time?: Date;
+  ticket_price?: number;
+  seat_number?: string;
+  theater_room?: string;
+  ticket_type?: string;
 }
