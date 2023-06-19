@@ -4,6 +4,8 @@ import { Response } from 'src/utils/response/response.decorator';
 import {
   GetAnalyticsRevenueQueryDto,
   GetAnalyticsVisitsQueryDto,
+  GetRevenueParamDto,
+  GetVisitedParamDto,
 } from 'src/dto/analytics/get-analytics.dto';
 
 @Controller('analytics')
@@ -12,7 +14,7 @@ export class AnalyticsController {
   constructor(private readonly analyticService: AnalyticsService) {}
   @Get('/revenue/:method')
   async getRevenue(
-    @Param() params: { method: string },
+    @Param() params: GetRevenueParamDto,
     @Query() query: GetAnalyticsRevenueQueryDto,
   ) {
     if (params.method === 'db-aggregation') {
@@ -24,7 +26,7 @@ export class AnalyticsController {
 
   @Get('/visited/:method')
   async getVisited(
-    @Param() params: { method: string },
+    @Param() params: GetVisitedParamDto,
     @Query() query: GetAnalyticsVisitsQueryDto,
   ) {
     if (params.method === 'db-aggregation') {

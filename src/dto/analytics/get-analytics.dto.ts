@@ -1,6 +1,10 @@
 import { Type } from 'class-transformer';
-import { IsDate, IsOptional } from 'class-validator';
+import { IsDate, IsEnum, IsOptional, IsString } from 'class-validator';
 
+enum Method {
+  db = 'db-aggregation',
+  direct = 'direct',
+}
 export class GetAnalyticsRevenueQueryDto {
   @IsDate()
   @IsOptional()
@@ -11,6 +15,11 @@ export class GetAnalyticsRevenueQueryDto {
   @IsOptional()
   @Type(() => Date)
   readonly toDate: Date;
+}
+export class GetRevenueParamDto {
+  @IsString()
+  @IsEnum(Method)
+  method: string;
 }
 
 export class GetAnalyticsVisitsQueryDto {
@@ -23,4 +32,10 @@ export class GetAnalyticsVisitsQueryDto {
   @IsOptional()
   @Type(() => Date)
   readonly toDate: Date;
+}
+
+export class GetVisitedParamDto {
+  @IsString()
+  @IsEnum(Method)
+  method: string;
 }
