@@ -26,8 +26,41 @@ export class AnalyticsService {
     }
     return formattedResponseData;
   }
-  async calculateRevenueDirectly(data) {
-    return true;
+  async calculateRevenueDirectly(data: IGetRevenue) {
+    let allTickets = await this.ticketService.getAllTickets({});
+    if (data.fromDate) {
+      allTickets = allTickets.filter(
+        (ticket) => ticket.movie_time.getTime() >= data.fromDate.getTime(),
+      );
+    }
+    if (data.toDate) {
+      allTickets = allTickets.filter(
+        (ticket) => ticket.movie_time.getTime() <= data.toDate.getTime(),
+      );
+    }
+
+    const summary: { month?: string; profit?: number } = {};
+
+    allTickets.forEach((ticket) => {
+      const movieTime = new Date(ticket.movie_time);
+      const month: string = movieTime.toLocaleString('en-US', {
+        month: 'long',
+      });
+      const profit: number = +ticket.ticket_price;
+
+      if (summary[month]) {
+        summary[month] += profit;
+      } else {
+        summary[month] = profit;
+      }
+    });
+
+    const summaryList = Object.entries(summary).map(([month, profit]) => ({
+      month,
+      summaryProfit: profit.toString(),
+    }));
+
+    return summaryList;
   }
 
   async getVisitsByDbAggregation(data: IGetVisits) {
@@ -51,7 +84,7 @@ export class AnalyticsService {
     return formattedResponseData;
   }
 
-  async calculateVisitsDirectly(data) {
+  async calculateVisitsDirectly(data: IGetVisits) {
     return true;
   }
 }

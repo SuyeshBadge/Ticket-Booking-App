@@ -103,4 +103,8 @@ export class TicketService {
     const query = `SELECT DATE_TRUNC('month', movie_time) AS month, COUNT(*) AS visits FROM ticket_schema ${where} GROUP BY month ORDER BY month;`;
     return this.ticketRepository.runRawQuery(query);
   }
+
+  async getAllTickets(condition: any) {
+    return this.ticketRepository.find(condition);
+  }
 }
