@@ -72,3 +72,6 @@ Make sure to check the API documentation or the source code for a complete list 
 
 The configuration of the application can be modified by editing the `.env` file. You can change the database credentials, port number, and other settings according to your requirements.
 
+## Postman Documentation
+
+`https://documenter.getpostman.com/view/18664915/2s93sjV9ZP#c56e1edc-e7a6-427b-827a-6e65c630b034`
