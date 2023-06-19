@@ -72,6 +72,3 @@ Make sure to check the API documentation or the source code for a complete list 
 
 The configuration of the application can be modified by editing the `.env` file. You can change the database credentials, port number, and other settings according to your requirements.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
