@@ -8,12 +8,8 @@ services:
       - '2023:2023'
     depends_on:
       - db
-    environment:
-      - DATABASE_HOST=db
-      - DATABASE_PORT=5432
-      - DATABASE_USERNAME=postgres
-      - DATABASE_PASSWORD=booking@123
-      - DATABASE_NAME=bookings
+    networks:
+      - ticket-booking-network
 
   db:
     image: postgres
@@ -24,3 +20,13 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=booking@123
       - POSTGRES_DB=bookings
+    volumes:
+      - ticket-booking-db:/var/lib/postgresql/data
+    networks:
+      - ticket-booking-network
+
+networks:
+  ticket-booking-network:
+
+volumes:
+  ticket-booking-db:

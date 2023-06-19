@@ -1,73 +1,77 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Ticket Booking App
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This is a ticket booking application built using NestJS, Postgres, and Docker. It allows users to book tickets for various events.
 
 ## Installation
 
-```bash
-$ npm install
-```
+### Without Docker Setup
 
-## Running the app
+1. Clone the repository:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+git clone https://github.com/SuyeshBadge/Ticket-Booking-App.git
 ```
 
-## Test
+2. Install dependencies:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+cd ticket-booking-app
+npm install
 ```
 
-## Support
+3. Set up the Postgres database:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+   - Create a new Postgres database.
+   - Update the database configuration in the `.env` file with your database credentials.
 
-## Stay in touch
+4. Run database migrations:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+5. Start the application:
+
+```bash
+npm run start:prod
+```
+
+6. The application will be running at `http://localhost:2023`.
+
+### With Docker Setup
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/SuyeshBadge/Ticket-Booking-App.git
+```
+
+2. Install Docker and Docker Compose if you haven't already.
+
+3. Set up the Postgres database:
+
+   - Update the database configuration in the `docker-compose.yml` file with your database credentials or add them in `.env` .
+
+4. Build and start the Docker containers:
+
+```bash
+cd ticket-booking-app
+docker-compose up -d
+```
+
+5. The application will be running at `http://localhost:2023`.
+
+## Usage
+
+Once the application is running, you can use the provided API endpoints to interact with the ticket booking system. Here are some of the available endpoints:
+
+- `GET /ticket/:id`: Get details of a specific ticket.
+- `POST /ticket`: Create a new ticket.
+- `PATCH /ticket/:id`: Update details of a specific ticket.
+- `DELETE /ticket/:id`: Delete a specific ticket.
+
+Make sure to check the API documentation or the source code for a complete list of available endpoints and their usage.
+
+## Configuration
+
+The configuration of the application can be modified by editing the `.env` file. You can change the database credentials, port number, and other settings according to your requirements.
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
